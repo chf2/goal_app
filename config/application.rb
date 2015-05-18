@@ -35,6 +35,3 @@ module GoalApp
     end
   end
 end
-
-  end
-end
