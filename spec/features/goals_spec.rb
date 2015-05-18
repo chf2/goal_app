@@ -75,7 +75,7 @@ feature "user can update goals" do
   it "edits goal / expect public/private is pre-filled" do
     visit edit_goal_url(1)
     fill_in("goal-body", with: "Edited Goal")
-    find_field("goal-public").should be_selected
+    find_field("goal-public").should be_checked
     click_on("Update Goal")
     expect(page).to have_content("Ryan")
     expect(page).to have_content("Edited Goal")

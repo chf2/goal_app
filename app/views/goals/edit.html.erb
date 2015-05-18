@@ -14,7 +14,7 @@
       id="goal-public"
       name="goal[public]"
       value="true"
-      <%= "selected" if @goal.public %>>
+      <%= "checked" if @goal.public %>>
   </label><br>
   <label for="goal-private">Private
     <input
@@ -22,7 +22,7 @@
       id="goal-private"
       name="goal[public]"
       value="false"
-      <%= "selected" unless @goal.public %>>
+      <%= "checked" unless @goal.public %>>
   </label><br>
 
   <input type="submit" value="Update Goal">
