@@ -1,0 +1,5 @@
+<%= comment.body %><br>
+Written by <%= comment.author.username %>.
+<% if current_user == comment.author %>
+  <%= button_to "Delete Comment", comment_url(comment), method: :delete %>
+<% end %>

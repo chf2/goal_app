@@ -1,0 +1,13 @@
+<%= render @goal %>
+
+<h4>Comment on this goal</h4>
+<form action="<%= comments_url %>" method="POST">
+  <%= auth_token %>
+  <input type="hidden" name="comment[commentable_type]" value="Goal">
+  <input type="hidden" name="comment[commentable_id]" value="<%= @goal.id %>">
+  <label for="comment-body">Add Comment
+    <textarea name="comment[body]" id="comment-body"></textarea>
+  </label>
+  <br>
+  <input type="submit" value="Add Comment">
+</form>

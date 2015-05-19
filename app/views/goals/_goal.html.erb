@@ -1,7 +1,7 @@
 <%= goal.body %><br>
 Completed: <%= goal.completed ? "completed" : "in progress" %><br>
 Public: <%= goal.public ? "public" : "private" %><br>
-<% if user == current_user %>
+<% if goal.user == current_user %>
   <%= link_to "Edit Goal", edit_goal_url(goal) %><br>
   <% if !goal.completed %>
     <%= button_to "Mark Completed", toggle_goal_url(goal) %>
@@ -10,4 +10,8 @@ Public: <%= goal.public ? "public" : "private" %><br>
   <% end %>
   <%= button_to "Delete Goal", goal_url(goal), method: :delete %>
 <% end %>
+<%= link_to "Comment On Goal", goal_url(goal) %>
 <br>
+
+<h3>Comments on the this goal:</h3>
+<%= render goal.comments.includes(:author) %>

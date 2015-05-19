@@ -6,4 +6,5 @@ Rails.application.routes.draw do
       post 'toggle'
     end
   end
+  resources :comments, only: [:create, :destroy]
 end

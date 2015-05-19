@@ -1,2 +1,17 @@
 <h1><%= @user.username %></h1>
 <%= render @goals, user: @user %>
+
+<h3>Comments about <%= @user.username %></h3>
+<%= render @comments %>
+
+<h4>Comment on User</h3>
+<form action="<%= comments_url %>" method="POST">
+  <%= auth_token %>
+  <input type="hidden" name="comment[commentable_type]" value="User">
+  <input type="hidden" name="comment[commentable_id]" value="<%= @user.id %>">
+  <label for="comment-body">Add Comment
+    <textarea name="comment[body]" id="comment-body"></textarea>
+  </label>
+  <br>
+  <input type="submit" value="Add Comment">
+</form>

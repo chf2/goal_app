@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @goals = @user == current_user ? @user.goals : @user.goals.where(public: true)
+    @comments = @user.comments.includes(:author)
   end
 
   private

@@ -1,4 +1,6 @@
 class Goal < ActiveRecord::Base
+  include Commentable
+  
   validates :body, :user_id, presence: true
 
   after_initialize :set_default_completed

@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
+  include Commentable
+  
   validates :username, :session_token, :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
   attr_reader :password
 
   has_many :goals
-
+  has_many :authored_comments, class_name: "Comment", foreign_key: :author_id
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(username, password)
