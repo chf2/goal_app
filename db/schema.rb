@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519001304) do
+ActiveRecord::Schema.define(version: 20150519005311) do
+
+  create_table "cheers", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "goal_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cheers", ["goal_id"], name: "index_cheers_on_goal_id"
+  add_index "cheers", ["user_id"], name: "index_cheers_on_user_id"
 
   create_table "comments", force: :cascade do |t|
     t.integer  "commentable_id"
@@ -64,6 +74,7 @@ ActiveRecord::Schema.define(version: 20150519001304) do
     t.string   "username",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "cheers"
   end
 
   add_index "users", ["session_token"], name: "index_users_on_session_token"

@@ -1,6 +1,7 @@
 <%= goal.body %><br>
 Completed: <%= goal.completed ? "completed" : "in progress" %><br>
 Public: <%= goal.public ? "public" : "private" %><br>
+Number of cheers: <%= goal.cheers.length %><br>
 <% if goal.user == current_user %>
   <%= link_to "Edit Goal", edit_goal_url(goal) %><br>
   <% if !goal.completed %>
@@ -11,6 +12,11 @@ Public: <%= goal.public ? "public" : "private" %><br>
   <%= button_to "Delete Goal", goal_url(goal), method: :delete %>
 <% end %>
 <%= link_to "Comment On Goal", goal_url(goal) %>
+
+<% unless current_user.cheered_goals.include?(goal) %>
+  <%= button_to "Cheer this goal", cheer_goal_url(goal) %>
+<% end %>
+
 <br>
 
 <h3>Comments on the this goal:</h3>
